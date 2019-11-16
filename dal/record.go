@@ -3,7 +3,7 @@ package db
 import (
 	"fmt"
 
-	"github.com/learngo/inotify_directory/model"
+	"github.com/dfsnotify/model"
 )
 
 func InsertOperatorRecord(record *model.OpRecord) (recordId int64, err error) {

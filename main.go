@@ -6,10 +6,10 @@ import (
 	"log"
 	"time"
 
-	"github.com/learngo/inotify_directory/model"
+	"github.com/dfsnotify/model"
 
+	db "github.com/dfsnotify/dal"
 	"github.com/fsnotify/fsnotify"
-	db "github.com/learngo/inotify_directory/dal"
 )
 
 const (

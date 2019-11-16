@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/learngo/inotify_directory/model"
+	"github.com/dfsnotify/model"
 )
 
 func init() {
