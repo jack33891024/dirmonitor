@@ -15,7 +15,7 @@ func InsertOperatorRecord(record *model.OpRecord) (err error) {
 	sqlStr := `insert into record(operator,file_path) values(?,?)`
 	result, err := DB.Exec(sqlStr, record.Operator, record.FilePath)
 	if err != nil {
-		err = fmt.Errorf("Execute SQL failed, err: %v\n", err)
+		err = fmt.Errorf("Execute SQL failed,err: %v\n", err)
 		return
 	}
 	_, err = result.LastInsertId()
