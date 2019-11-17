@@ -1,0 +1,10 @@
+#MySQL用户
+user = root
+#MySQL密码
+pass = 1234qwer
+#MYSQL主机
+host = 192.168.0.199
+#MYSQL端口
+port = 3306
+#database
+database = monitor_dir
