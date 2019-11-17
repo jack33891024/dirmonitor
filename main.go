@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/dirmonitor/model"
-
+	"github.com/dirmonitor/config"
 	"github.com/dirmonitor/dal/db"
+	"github.com/dirmonitor/model"
 	"github.com/fsnotify/fsnotify"
 )
 
@@ -20,18 +20,24 @@ const (
 )
 
 var (
-	option string
+	conf      string //cmd传的配置文件
+	directory string //cmd传的目录
 )
 
 func init() {
-	flag.StringVar(&option, "d", "/data/app/vkgame/public/uploads", "pass directory")
+	flag.StringVar(&conf, "f", "/etc/monitor.cnf", "pass config")
+	flag.StringVar(&directory, "d", "/data/app/vkgame/public/uploads", "pass directory")
 	flag.Parse()
 }
 
 func main() {
 	// connect mysql
-	dsn := "root:1234qwer@tcp(192.168.0.199:3306)/monitor_dir?parseTime=true"
-	err := db.InitDB(dsn)
+	dsn, err := config.ParseConfig(conf)
+	if err != nil {
+		err = fmt.Errorf("configuration parse failed")
+		return
+	}
+	err = db.InitDB(dsn)
 	if err != nil {
 		return
 	}
@@ -43,7 +49,7 @@ func main() {
 	}
 	defer watch.Close()
 	//添加要监控的对象，文件或文件夹
-	err = watch.Add(option)
+	err = watch.Add(directory)
 	if err != nil {
 		log.Fatal(err)
 	}

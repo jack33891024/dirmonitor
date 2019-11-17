@@ -8,5 +8,3 @@ host = 192.168.0.199
 port = 3306
 # mysql database
 database = monitor_dir
-# monitor dir on host
-monitor_dir = /data/app/vkgame/public/uploads
