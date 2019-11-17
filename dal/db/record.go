@@ -12,7 +12,9 @@ func InsertOperatorRecord(record *model.OpRecord) (err error) {
 		err = fmt.Errorf("invalid article parameter")
 		return
 	}
-	sqlStr := `insert into record(operator,file_path) values(?,?)`
+	sqlStr := `insert into 
+					record(operator,file_path) 
+				values(?,?)`
 	result, err := DB.Exec(sqlStr, record.Operator, record.FilePath)
 	if err != nil {
 		err = fmt.Errorf("Execute SQL failed,err: %v\n", err)
