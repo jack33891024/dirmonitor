@@ -9,3 +9,9 @@ type OpRecord struct {
 	Operator  string    `db:"operator"`   //具体操作
 	FilePath  string    `db:"file_path"`  //对应文件
 }
+
+// 命令行传参
+var (
+	Conf      string //cmd传的配置文件
+	Directory string //cmd传的目录
+)
