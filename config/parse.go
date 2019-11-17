@@ -46,6 +46,9 @@ func ParseConfig(fileName string) (dsn string, err error) {
 			port = value
 		case key == "database":
 			database = value
+		default:
+			fmt.Errorf("Unkown parameter\n")
+			return
 		}
 	}
 	dsn = fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?parseTime=true", user, pass, host, port, database)
