@@ -4,11 +4,10 @@ import (
 	"flag"
 	"fmt"
 	"log"
-	"time"
 
-	"github.com/dfsnotify/model"
+	"github.com/dirmonitor/model"
 
-	db "github.com/dfsnotify/dal"
+	"github.com/dirmonitor/dal/db"
 	"github.com/fsnotify/fsnotify"
 )
 
@@ -36,7 +35,6 @@ func main() {
 	if err != nil {
 		return
 	}
-	fmt.Println("ok")
 
 	//创建一个监控对象
 	watch, err := fsnotify.NewWatcher()
@@ -51,68 +49,61 @@ func main() {
 	}
 	//我们另启一个goroutine来处理监控对象的事件
 	go func() {
-		nowStr := time.Now().Format("2006/01/02 15:04:05")
 		for {
 			select {
 			case ev := <-watch.Events:
 				{
 					if ev.Op&fsnotify.Create == fsnotify.Create {
-						fmt.Println(nowStr, OP_CREATE, ev.Name)
 						record := &model.OpRecord{}
-						record.EventTime = nowStr
 						record.Operator = OP_CREATE
 						record.FilePath = ev.Name
-						recordId, err := db.InsertOperatorRecord(record)
+						err := db.InsertOperatorRecord(record)
 						if err != nil {
-							err = fmt.Errorf("create failed,insert id: %d,err: %v\n", recordId, err)
+							err = fmt.Errorf("create failed,err: %v\n", err)
 							return
 						}
 					}
 					if ev.Op&fsnotify.Write == fsnotify.Write {
 						//fmt.Println(nowStr, OP_WRITE, ev.Name)
 						record := &model.OpRecord{}
-						record.EventTime = nowStr
 						record.Operator = OP_WRITE
 						record.FilePath = ev.Name
-						recordId, err := db.InsertOperatorRecord(record)
+						err := db.InsertOperatorRecord(record)
 						if err != nil {
-							err = fmt.Errorf("write failed,insert id: %d,err: %v\n", recordId, err)
+							err = fmt.Errorf("write failed,err: %v\n", err)
 							return
 						}
 					}
 					if ev.Op&fsnotify.Remove == fsnotify.Remove {
 						//fmt.Println(nowStr, OP_DELETE, ev.Name)
 						record := &model.OpRecord{}
-						record.EventTime = nowStr
 						record.Operator = OP_DELETE
 						record.FilePath = ev.Name
-						recordId, err := db.InsertOperatorRecord(record)
+						err := db.InsertOperatorRecord(record)
 						if err != nil {
-							err = fmt.Errorf("delete failed,insert id: %d,err: %v\n", recordId, err)
+							err = fmt.Errorf("delete failed,err: %v\n", err)
 							return
 						}
 					}
 					if ev.Op&fsnotify.Rename == fsnotify.Rename {
 						//fmt.Println(nowStr, OP_RENAME, ev.Name)
 						record := &model.OpRecord{}
-						record.EventTime = nowStr
 						record.Operator = OP_RENAME
 						record.FilePath = ev.Name
-						recordId, err := db.InsertOperatorRecord(record)
+						err := db.InsertOperatorRecord(record)
 						if err != nil {
-							err = fmt.Errorf("rename failed,insert id: %d,err: %v\n", recordId, err)
+							err = fmt.Errorf("rename failederr: %v\n", err)
 							return
 						}
 					}
 					if ev.Op&fsnotify.Chmod == fsnotify.Chmod {
 						//fmt.Println(nowStr, OP_CHMOD, ev.Name)
 						record := &model.OpRecord{}
-						record.EventTime = nowStr
 						record.Operator = OP_CHMOD
 						record.FilePath = ev.Name
-						recordId, err := db.InsertOperatorRecord(record)
+						err := db.InsertOperatorRecord(record)
 						if err != nil {
-							err = fmt.Errorf("chmod failed,insert id: %d,err: %v\n", recordId, err)
+							err = fmt.Errorf("chmod failed,err: %v\n", err)
 							return
 						}
 					}
