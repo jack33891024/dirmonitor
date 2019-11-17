@@ -25,7 +25,7 @@ var (
 )
 
 func init() {
-	flag.StringVar(&conf, "f", "/etc/monitor.cnf", "pass config")
+	flag.StringVar(&conf, "f", "./monitor.cnf", "pass config")
 	flag.StringVar(&directory, "d", "/data/app/vkgame/public/uploads", "pass directory")
 	flag.Parse()
 }

@@ -1,0 +1,10 @@
+# mysql user
+user = root
+# mysql password
+pass = 1234qwer
+# mysql host
+host = 192.168.0.199
+# mysql port
+port = 3306
+# mysql database
+database = monitor_dir
