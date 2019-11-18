@@ -13,7 +13,7 @@ func ParseConfig(fileName string) (dsn string, err error) {
 		return
 	}
 
-	lineArr := strings.Split(string(data), "\r\n")
+	lineArr := strings.Split(string(data), "\n")
 	for _, line := range lineArr {
 		// 去除首尾空行
 		line = strings.TrimSpace(line)
