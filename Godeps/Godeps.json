@@ -1,0 +1,31 @@
+{
+	"ImportPath": "github.com/dirmonitor",
+	"GoVersion": "go1.12",
+	"GodepVersion": "v80",
+	"Deps": [
+		{
+			"ImportPath": "github.com/fsnotify/fsnotify",
+			"Comment": "v1.4.7-18-g4bf2d1f",
+			"Rev": "4bf2d1fec78374803a39307bfb8d340688f4f28e"
+		},
+		{
+			"ImportPath": "github.com/go-sql-driver/mysql",
+			"Comment": "v1.4.0-42-gb4242ba",
+			"Rev": "b4242bab7dc57d57fef955900943999b6fb34b67"
+		},
+		{
+			"ImportPath": "github.com/jmoiron/sqlx",
+			"Comment": "v1.2.0-23-gd7d9517",
+			"Rev": "d7d95172beb5a538ff08c50a6e98aee6e7c41f40"
+		},
+		{
+			"ImportPath": "github.com/jmoiron/sqlx/reflectx",
+			"Comment": "v1.2.0-23-gd7d9517",
+			"Rev": "d7d95172beb5a538ff08c50a6e98aee6e7c41f40"
+		},
+		{
+			"ImportPath": "golang.org/x/sys/unix",
+			"Rev": "6254a7c3cac686fe2a53a481f189cea00afecc17"
+		}
+	]
+}
