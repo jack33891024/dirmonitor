@@ -10,5 +10,6 @@ func TestParseConfig(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+
 	fmt.Println(dsn)
 }
