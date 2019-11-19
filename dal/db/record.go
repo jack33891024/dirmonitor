@@ -28,12 +28,16 @@ func InsertOperatorRecord(record *model.OpRecord) (err error) {
 	return
 }
 
+// 查询展示最近50条
 func QueryOperatorRecord() (RecordList []*model.OpRecord, err error) {
 	sqlStr := `select 
 					id,event_time,operator,file_path 
        			from 
 					record
-				order by event_time desc`
+				order by 
+					event_time desc
+				limit 
+					25`
 
 	err = DB.Select(&RecordList, sqlStr)
 	if err != nil {
@@ -43,3 +47,5 @@ func QueryOperatorRecord() (RecordList []*model.OpRecord, err error) {
 
 	return
 }
+
+// 根据时间区间查询
