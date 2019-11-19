@@ -27,3 +27,14 @@ func TestInsertOperatorRecord(t *testing.T) {
 
 	t.Logf("insert success")
 }
+
+func TestQueryOperatorRecord(t *testing.T) {
+	recordList, err := QueryOperatorRecord()
+	if err != nil {
+		t.Fatalf("query record failed, err: %v\n", err)
+	}
+
+	for _, v := range recordList {
+		t.Logf("%#v\n", v)
+	}
+}

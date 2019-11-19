@@ -1,3 +1,4 @@
+{{define "views/index.html"}}
 <!doctype html>
 <html>
 <head>
@@ -5,8 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DirMonitor</title>
 </head>
-
 <body>
+
+<form action="/GetInfo" method="get">
+    <table border="1px">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>时间</th>
+                <th>操作</th>
+                <th>文件</th>
+            </tr>
+        </thead>
+        <tbody>
+        {{range .data}}
+            <tr>
+                <td>{{.Id}}</td>
+                <td>{{.EventTime}}</td>
+                <td>{{.Operator}}</td>
+                <td>{{.FilePath}}</td>
+            </tr>
+        {{end}}
+        </tbody>
+    </table>
+</form>
 
 </body>
 </html>
+{{end}}

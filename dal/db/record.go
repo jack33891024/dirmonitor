@@ -27,3 +27,19 @@ func InsertOperatorRecord(record *model.OpRecord) (err error) {
 	}
 	return
 }
+
+func QueryOperatorRecord() (RecordList []*model.OpRecord, err error) {
+	sqlStr := `select 
+					id,event_time,operator,file_path 
+       			from 
+					record
+				order by event_time desc`
+
+	err = DB.Select(&RecordList, sqlStr)
+	if err != nil {
+		err = fmt.Errorf("查询记录信息失败\n")
+		return
+	}
+
+	return
+}
