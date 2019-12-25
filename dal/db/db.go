@@ -11,7 +11,7 @@ var (
 
 // InitDB 初始化数据库连接
 func InitDB(dsn string) (err error) {
-	DB, err = sqlx.Connect("mysql", dsn)
+	DB, err = sqlx.Connect("MySQL", dsn)
 	if err != nil {
 		panic(err)
 	}

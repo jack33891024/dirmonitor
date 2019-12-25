@@ -35,7 +35,7 @@ func GetInfoHandler(ctx *gin.Context) {
 }
 
 func main() {
-	// connect mysql
+	// connect MySQL
 	dsn, err := config.ParseConfig(model.Conf)
 	if err != nil {
 		err = fmt.Errorf("configuration parse failed")
